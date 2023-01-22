@@ -19,14 +19,14 @@ class Logger:
         self.logger.addHandler(handler)
 
         # fileout
-        # handler = logging.handlers.RotatingFileHandler(
-        #     filename='logger.log',
-        #     maxBytes=1048576,
-        #     backupCount=3
-        # )
-        # handler.setLevel(logging.DEBUG)
-        # handler.setFormatter(formatter)
-        # self.logger.addHandler(handler)
+        handler = logging.handlers.RotatingFileHandler(
+            filename='logger.log',
+            maxBytes=1048576,
+            backupCount=3
+        )
+        handler.setLevel(logging.DEBUG)
+        handler.setFormatter(formatter)
+        self.logger.addHandler(handler)
 
     def debug(self, msg):
         self.logger.debug(msg)
