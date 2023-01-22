@@ -1,7 +1,13 @@
+# ============
+# 基礎
+# ------------
 Django==3.2.16
 uwsgi==2.0.21
 psycopg2==2.9.5
 
+# ============
+# CELERY
+# ------------
 celery==5.1.2
 django-celery-beat==2.2.1
 django-celery-results==2.2.0

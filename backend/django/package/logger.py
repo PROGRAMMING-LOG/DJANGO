@@ -26,7 +26,7 @@ class Logger:
         )
         handler.setLevel(logging.DEBUG)
         handler.setFormatter(formatter)
-        # self.logger.addHandler(handler)
+        self.logger.addHandler(handler)
 
     def debug(self, msg):
         self.logger.debug(msg)
