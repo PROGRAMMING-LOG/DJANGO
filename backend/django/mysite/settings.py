@@ -60,12 +60,13 @@ ROOT_URLCONF = 'mysite.urls'
 
 CELERY_BROKER_URL = 'pyamqp://rabbitmq:5672'
 CELERY_RESULT_BACKEND = 'django-db'
-CELERY_BEAT_SCHEDULE = {
-    'hello': {
-        'task': 'app.tasks.hello',
-        'schedule': crontab(),
-    },
-}
+CELERY_CACHE_BACKEND = 'django-cache'
+# CELERY_BEAT_SCHEDULE = {
+#     'hello': {
+#         'task': 'app.tasks.hello',
+#         'schedule': crontab(),
+#     },
+# }
 
 
 TEMPLATES = [
