@@ -8,7 +8,7 @@ services:
   nginx:
     restart: always
     image: nginx
-    container_name: nuxt-django-postgresql.nginx
+    container_name: django.nginx
     ports:
       - 8000:8000
     volumes:
@@ -21,7 +21,7 @@ services:
   postgresql:
     build:
       context: ./db
-    container_name: nuxt-django-postgresql.postgresql
+    container_name: django.postgresql
     ports:
       - 5432:5432
     environment:
@@ -34,7 +34,7 @@ services:
 
   adminer:
     image: adminer
-    container_name: nuxt-django-postgresql.adminer
+    container_name: django.adminer
     restart: always
     ports:
       - 8080:8080
@@ -45,8 +45,8 @@ services:
     restart: always
     build:
       context: ./backend
-    image: nuxt-django-postgresql-django
-    container_name: nuxt-django-postgresql.django
+    image: django
+    container_name: django.django
     volumes:
       - ./backend:/app
     expose:
@@ -57,7 +57,7 @@ services:
     command: bash -c "uwsgi --socket :8001 --module mysite.wsgi"
 
   rabbitmq:
-    container_name: nuxt-django-postgresql.rabbitmq
+    container_name: django.rabbitmq
     image: rabbitmq:latest
     volumes:
       - rabbitmq-data:/var/lib/rabbitmq
@@ -65,8 +65,8 @@ services:
       - 5672:5672
 
   celery:
-    image: nuxt-django-postgresql-django
-    container_name: nuxt-django-postgresql.celery
+    image: django
+    container_name: django.celery
     volumes:
       - ./backend:/app
     environment:
@@ -79,8 +79,8 @@ services:
     command: bash -c "celery -A mysite worker -l info"
 
   celery-beat:
-    image: nuxt-django-postgresql-django
-    container_name: nuxt-django-postgresql.celery-beat
+    image: django
+    container_name: django.celery-beat
     volumes:
       - ./backend:/app
     environment:
