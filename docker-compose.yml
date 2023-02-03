@@ -91,3 +91,10 @@ services:
     depends_on:
       - django
     command: bash -c "celery -A mysite beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler --pidfile="
+
+  selenium:
+    image: selenium/standalone-chrome-debug:3.141.59
+    container_name: 'django.selenium'
+    ports:
+      - 4445:4444
+      - 5901:5900
