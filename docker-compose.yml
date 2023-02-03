@@ -45,7 +45,7 @@ services:
     restart: always
     build:
       context: ./backend
-    image: django
+    image: django-main
     container_name: django.django
     volumes:
       - ./backend:/app
@@ -65,7 +65,7 @@ services:
       - 5672:5672
 
   celery:
-    image: django
+    image: django-main
     container_name: django.celery
     volumes:
       - ./backend:/app
@@ -79,7 +79,7 @@ services:
     command: bash -c "celery -A mysite worker -l info"
 
   celery-beat:
-    image: django
+    image: django-main
     container_name: django.celery-beat
     volumes:
       - ./backend:/app
