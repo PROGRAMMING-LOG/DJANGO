@@ -18,6 +18,8 @@ import regex
 from django.conf import settings
 from django.contrib.auth.models import User
 
+# Worker
+from app.tasks import work
 
 # Logger
 from package.logger import Logger
@@ -243,3 +245,9 @@ for col in ws.columns:
     ws.column_dimensions[column].width = max_length
 
 wb.save(settings.BASE_DIR + '/app/' + 'data.xlsx')
+
+
+# #########
+# Work
+# #########
+work.delay()
